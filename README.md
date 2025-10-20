@@ -6,10 +6,10 @@
 
 
 ## FORMULA:
-P = I<sup>2</sup>R
-<br> P --> Power (in watts)
-<br> I --> Intensity
-<br> R --> Resistance
+B= W/H<sup>2
+<br> B --> BMI 
+<br> I --> Weight (in kg)
+<br> H --> Height
 
 ## DESIGN STEPS:
 
@@ -32,13 +32,113 @@ Create a HTML file to implement form based input and output.
 Publish the website in the given URL.
 
 ## PROGRAM :
+'''
+<html>
+    <head>
+        <title>BMI Calculator</title>
+        <style type="text/css">
+            body{
+                border: solid rgb(238, 241, 243) 10px;
+                background-color: rgb(9, 16, 148);
+            }
+            .value{
+                text-align: center;
+                padding: 30px;
+                width: 300px;
+                height: 30px;
+                font-size: 20px;
+                background-color: rgb(222, 81, 189);
+                margin:auto;
+
+            }
+            h1,h2,h3{
+                text-align: center;
+                font-size: 20px;
+                padding: 20px;
+            
+            }
+            button{
+                padding: 10px;
+                width: 250px;
+                border-radius: 25px;
+                border:solid rgb(250, 152, 152) 5px;
+                background-color: rgb(132, 74, 148);
+                font-size: 15px;
+            } 
+            h3{
+                padding: 20px 50px;
+                text-align: center;
+                border: 10px solid rgb(121, 177, 9);
+                background-color: rgb(181, 182, 206);
+                width: 380px;
+                margin: 20px auto;
+
+            }
+            input{
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    <h1>Guhan.K (25014479)</h1>
+    <h2>Body Mass Index (BMI) Calculator</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="value">
+        <label>Height (cm):</label>
+        <input type="text" name="height" required>
+        </div>
+        <div class="value">
+        <label>Weight (kg):</label>
+        <input type="text" name="weight" required>
+        </div>
+        <div class="value">
+        <button type="submit" >Calculate BMI</button>
+        </div>
+    <h3>Your BMI: {{bmi}}</h3>
+    </form>
+    </body>
+</html>
+
+view.py
+
+from django.shortcuts import render
+def calculate_BMI(request):
+    context={}
+    context['bmi']="0"
+    context['height']="0"
+    context['weight']="0"
+    if request.method == "POST":
+        height = float(request.POST.get("height",'0'))
+        weight = float(request.POST.get("weight",'0'))
+        print('request=',request)
+        print('Height=',height)
+        print('Weight=',weight)
+        bmi = weight / ((height / 100) ** 2) 
+        context['bmi']=bmi
+        context['weight']=weight
+        context['height']=height
+        print('BMI=',bmi)
+    return render(request, 'myapp/guhan.html', context)
+
+    urls.py
+
+    from django.contrib import admin
+from django.urls import path
+from myapp import views
+urlpatterns =[
+    path('admin/', admin.site.urls),
+    path('Body Mass Index/',views.calculate_BMI,name="Body Mass Index"),
+    path('',views.calculate_BMI,name="Body Mass Index")
+]
+'''
 
 
 ## SERVER SIDE PROCESSING:
-
+![alt text](<guhan/myapp/templates/myapp/Screenshot 2025-10-18 113105.png>)
 
 ## HOMEPAGE:
-
+![alt text](<guhan/myapp/templates/Screenshot (115).png>)
 
 ## RESULT:
 The program for performing server side processing is completed successfully.
