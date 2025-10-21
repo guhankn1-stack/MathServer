@@ -102,10 +102,13 @@ Publish the website in the given URL.
 ```
 
 ## SERVER SIDE PROCESSING:
-![alt text](<guhan/myapp/templates/myapp/Screenshot 2025-10-18 113105.png>)
+<img width="1919" height="1079" alt="serverside" src="https://github.com/user-attachments/assets/632d5179-103f-481a-b471-7afc5b550d17" />
+
+
 
 ## HOMEPAGE:
-![alt text](<guhan/myapp/templates/Screenshot (115).png>)
+<img width="1920" height="1080" alt="output" src="https://github.com/user-attachments/assets/a9cf9620-6590-4505-ab6b-c5457f0c2f4b" />
+
 
 ## RESULT:
 The program for performing server side processing is completed successfully.
